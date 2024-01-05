@@ -11,6 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -26,9 +27,8 @@ import { MatBadgeModule } from '@angular/material/badge';
     MatMenuModule,
     MatSidenavModule,
     MatListModule,
-    MatBadgeModule
-    
-
+    MatBadgeModule,
+    MatSnackBarModule,
   ],
 })
 export class MaterialModule {}
