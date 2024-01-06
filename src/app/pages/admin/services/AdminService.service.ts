@@ -15,6 +15,35 @@ export class AdminServiceService {
     });
   }
 
+  getAllCategories() {
+    return this.http.get(`${BASE_URL}/api/admin/categories`, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
+  createProduct(product: any) {
+    return this.http.post(`${BASE_URL}/api/admin/createproduct`, product, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
+  getAllProducts() {
+    return this.http.get(`${BASE_URL}/api/admin/products`, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+  getAllProductsByName(search: any) {
+    return this.http.get(`${BASE_URL}/api/admin/search/${search}`, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
+  deleteProduct(id: any) {
+    return this.http.delete(`${BASE_URL}/api/admin/product/${id}`, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
   createAuthorizationHeader() {
     return new HttpHeaders().set(
       'Authorization',

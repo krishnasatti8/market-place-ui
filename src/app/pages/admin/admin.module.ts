@@ -7,12 +7,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/app/material.module';
 import { CreateCategoryComponent } from './components/create-category/create-category.component';
+import { CreateProductComponent } from './components/create-product/create-product.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 
 @NgModule({
   declarations: [
     AdminComponent,
-    CreateCategoryComponent
+    DashboardComponent,
+    CreateCategoryComponent,
+    CreateProductComponent
   ],
   imports: [
     CommonModule,
