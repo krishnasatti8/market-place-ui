@@ -1,0 +1,98 @@
+/* Add these styles to your component's SCSS file */
+
+.cart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+  
+    .cart-item {
+      width: 100%;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+  
+      .product-info {
+        display: flex;
+        align-items: center;
+  
+        .product-image {
+          margin-right: 10px;
+  
+          img {
+            width: 60px; /* Adjust as needed */
+            height: 60px; /* Adjust as needed */
+            object-fit: cover;
+          }
+        }
+  
+        .product-details {
+          .item-row {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+  
+            .product-name {
+              flex: 1;
+            }
+  
+            .product-price {
+              margin-left: 10px;
+            }
+  
+            .quantity-controls {
+              display: flex;
+              align-items: center;
+  
+              button {
+                background-color: #fff;
+                border: 1px solid #ccc;
+                border-radius: 50%;
+                margin: 0 5px;
+                cursor: pointer;
+              }
+  
+              .quantity {
+                margin: 0 5px;
+              }
+            }
+          }
+        }
+      }
+    }
+  
+    .total-price {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 10px;
+  
+      span {
+        font-weight: bold;
+      }
+    }
+  
+    button {
+      margin-top: 20px;
+    }
+  }
+  
+  .empty-cart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+  
+    mat-icon {
+      font-size: 48px;
+      color: #ccc;
+    }
+  
+    span {
+      margin-top: 10px;
+      color: #ccc;
+    }
+  }
+  

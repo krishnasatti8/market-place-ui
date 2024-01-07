@@ -24,7 +24,7 @@ export class UserStorageService {
     return window.localStorage.getItem(TOKEN);
   }
 
-  static getUser(): any {
+  static getUser(): any { 
     return JSON.parse(window.localStorage.getItem(USER));
   }
 
@@ -33,7 +33,7 @@ export class UserStorageService {
     if (user === null) {
       return null;
     }
-    return user.id;
+    return user.userId;
   }
 
   static getUserRole(): String {

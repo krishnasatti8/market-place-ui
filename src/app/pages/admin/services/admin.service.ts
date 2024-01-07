@@ -6,7 +6,7 @@ const BASE_URL = 'http://localhost:8080';
 const TOKEN = 'kmart-token';
 
 @Injectable({ providedIn: 'root' })
-export class AdminServiceService {
+export class AdminService {
   constructor(private http: HttpClient) {}
 
   createCategory(category: any) {

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { AdminServiceService } from '../../services/AdminService.service';
+import { AdminService } from '../../services/admin.service';
 
 @Component({
   selector: 'app-create-product',
@@ -16,7 +16,7 @@ export class CreateProductComponent implements OnInit {
   imagePreview: string | ArrayBuffer | null = null;
 
   constructor(
-    private adminServiceService: AdminServiceService,
+    private adminServiceService: AdminService,
     private fb: FormBuilder,
     private router: Router,
     private snackBar: MatSnackBar

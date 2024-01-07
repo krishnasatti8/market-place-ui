@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AdminServiceService } from '../../services/AdminService.service';
+import { AdminService } from '../../services/admin.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -13,7 +13,7 @@ export class CreateCategoryComponent implements OnInit {
   categoryForm: FormGroup;
 
   constructor(
-    private adminServiceService: AdminServiceService,
+    private adminServiceService: AdminService,
     private fb: FormBuilder,
     private router: Router,
     private snackBar: MatSnackBar

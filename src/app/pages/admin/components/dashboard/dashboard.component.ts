@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AdminServiceService } from '../../services/AdminService.service';
+import { AdminService } from '../../services/admin.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -13,7 +13,7 @@ export class DashboardComponent implements OnInit {
   searchForm: FormGroup;
 
   constructor(
-    private adminService: AdminServiceService,
+    private adminService: AdminService,
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
   ) {}
@@ -33,6 +33,8 @@ export class DashboardComponent implements OnInit {
         this.products.push(element);
       });
     });
+    console.log(this.products);
+    
   }
 
   searchProducts() {

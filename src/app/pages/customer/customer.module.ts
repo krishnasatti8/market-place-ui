@@ -6,11 +6,15 @@ import { CustomerComponent } from './customer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/app/material.module';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { CartComponent } from './components/cart/cart.component';
 
 
 @NgModule({
   declarations: [
-    CustomerComponent
+    CustomerComponent,
+    DashboardComponent,
+    CartComponent
   ],
   imports: [
     CommonModule,
