@@ -44,6 +44,18 @@ export class AdminService {
     });
   }
 
+  createCoupon(coupon: any) {
+    return this.http.post(`${BASE_URL}/api/admin/createcoupon`, coupon, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
+  getAllCoupons() {
+    return this.http.get(`${BASE_URL}/api/admin/coupons`, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
   createAuthorizationHeader() {
     return new HttpHeaders().set(
       'Authorization',

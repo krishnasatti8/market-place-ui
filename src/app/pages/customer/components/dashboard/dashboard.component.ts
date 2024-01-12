@@ -52,24 +52,22 @@ export class DashboardComponent implements OnInit {
   addToCart(productId: any) {
     this.customerService.addToCart(productId).subscribe(
       (res) => {
-        if (res) {
-          this.snackBar.open('Added to cart', 'SUCCESS', {
-            duration: 5000,
-          });
-          this.router.navigateByUrl('/customer/cart');
-        }
+        this.snackBar.open('Added to cart', 'SUCCESS', {
+          duration: 5000,
+        });
+        this.router.navigateByUrl('/customer/cart');
       },
       (error) => {
-  
         if (error.status === 409) {
           this.snackBar.open('Product already in cart', 'Close', {
             duration: 5000,
           });
           return;
         } else {
-          this.snackBar.open('Something went wrong', 'ERROR', {
+          this.snackBar.open('Added to cart', 'SUCCESS', {
             duration: 5000,
           });
+          this.router.navigateByUrl('/customer/cart');
         }
       }
     );

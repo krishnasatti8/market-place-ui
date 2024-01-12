@@ -9,6 +9,8 @@ import { MaterialModule } from 'src/app/material.module';
 import { CreateCategoryComponent } from './components/create-category/create-category.component';
 import { CreateProductComponent } from './components/create-product/create-product.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { CreateCouponComponent } from './components/create-coupon/create-coupon.component';
+import { CouponsComponent } from './components/coupons/coupons.component';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     AdminComponent,
     DashboardComponent,
     CreateCategoryComponent,
-    CreateProductComponent
+    CreateProductComponent,
+    CreateCouponComponent,
+    CouponsComponent
   ],
   imports: [
     CommonModule,

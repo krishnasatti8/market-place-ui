@@ -12,9 +12,11 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import {MatSelectModule} from '@angular/material/select';
-import {MatDialogModule} from '@angular/material/dialog';
-
+import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [],
@@ -32,8 +34,10 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatListModule,
     MatBadgeModule,
     MatSnackBarModule,
-    MatDialogModule
-  
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatTableModule,
   ],
 })
 export class MaterialModule {}

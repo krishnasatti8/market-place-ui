@@ -4,6 +4,8 @@ import { AdminComponent } from './admin.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CreateCategoryComponent } from './components/create-category/create-category.component';
 import { CreateProductComponent } from './components/create-product/create-product.component';
+import { CreateCouponComponent } from './components/create-coupon/create-coupon.component';
+import { CouponsComponent } from './components/coupons/coupons.component';
 
 const routes: Routes = [
   { path: '', component: AdminComponent },
@@ -12,12 +14,20 @@ const routes: Routes = [
     component: DashboardComponent,
   },
   {
-    path: 'category',
+    path: 'create-category',
     component: CreateCategoryComponent,
   },
   {
-    path: 'product',
+    path: 'create-product',
     component: CreateProductComponent,
+  },
+  {
+    path: 'create-coupon',
+    component: CreateCouponComponent,
+  },
+  {
+    path: 'coupons',
+    component: CouponsComponent,
   },
 ];
 

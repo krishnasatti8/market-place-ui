@@ -1,0 +1,53 @@
+<div class="container">
+    <mat-card>
+      <mat-card-title>Category</mat-card-title>
+      <mat-card-content> 
+    <form [formGroup]="couponForm" (ngSubmit)="addCoupon()">
+
+        <!-- name -->
+        <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput type="text" placeholder="Name" formControlName="name" required>
+            <mat-error *ngIf="couponForm.get('name').invalid && couponForm.get('name').touched">
+                Please enter a valid name
+            </mat-error>
+        </mat-form-field>
+
+        <!-- code -->
+        <mat-form-field appearance="outline">
+            <mat-label>Code</mat-label>
+            <input matInput type="text" placeholder="Code" formControlName="code" required>
+            <mat-error *ngIf="couponForm.get('code').invalid && couponForm.get('code').touched">
+                Please enter a valid code
+            </mat-error>
+        </mat-form-field>
+
+        <!-- discount -->
+
+        <mat-form-field appearance="outline">
+            <mat-label>Discount %</mat-label>
+            <input matInput type="number" placeholder="Discount" formControlName="discount" required>
+            <mat-error *ngIf="couponForm.get('discount').invalid && couponForm.get('discount').touched">
+                Please enter a valid discount
+            </mat-error>
+        </mat-form-field>
+
+        <!-- expiry date -->
+
+        <mat-form-field appearance="outline">
+            <mat-label>Expiration Date</mat-label>
+            <input [min]="date" matInput [matDatepicker]="picker" placeholder="Expiration Date" formControlName="expiryDate" required>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="couponForm.get('expiryDate').invalid && couponForm.get('expiryDate').touched">
+                Please enter a valid expiry date
+            </mat-error>
+        </mat-form-field>
+      
+          <button mat-raised-button color="primary" type="submit" [disabled]="couponForm.invalid">Add</button>
+  
+           </form>
+  </mat-card-content>
+   </mat-card>
+</div>
+  

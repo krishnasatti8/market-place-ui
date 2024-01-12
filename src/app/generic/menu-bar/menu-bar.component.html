@@ -30,19 +30,19 @@
   
         </mat-list-item>
   
-        <mat-list-item *ngIf="isAdminLoggedIn" routerLink="/admin/category" routerLinkActive="active">
+        <mat-list-item *ngIf="isAdminLoggedIn" routerLink="/admin/create-category" routerLinkActive="active">
           <button mat-button><mat-icon>category</mat-icon>Category</button>
         </mat-list-item>
   
-        <mat-list-item *ngIf="isAdminLoggedIn" routerLink="/admin/product" routerLinkActive="active">
-          <button mat-button><mat-icon>shopping_cart</mat-icon>Product</button>
+        <mat-list-item *ngIf="isAdminLoggedIn" routerLink="/admin/create-product" routerLinkActive="active">
+          <button mat-button><mat-icon>shopping_cart</mat-icon>Post Product</button>
         </mat-list-item>
   
         <mat-list-item *ngIf="isAdminLoggedIn" routerLink="/admin/orders" routerLinkActive="active">
           <button mat-button><mat-icon>shopping_cart</mat-icon>Orders</button>
         </mat-list-item>
   
-        <mat-list-item *ngIf="isAdminLoggedIn" routerLink="/admin/post-coupon" routerLinkActive="active">
+        <mat-list-item *ngIf="isAdminLoggedIn" routerLink="/admin/create-coupon" routerLinkActive="active">
           <button mat-button><mat-icon>shopping_cart</mat-icon>Post Coupon</button>
         </mat-list-item>
   
