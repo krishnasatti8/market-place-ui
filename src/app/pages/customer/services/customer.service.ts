@@ -25,7 +25,7 @@ export class CustomerService {
       productId: productId,
       userId: UserStorageService.getUserId(),
     };
- 
+
     return this.http.post(`${BASE_URL}/api/customer/addtocart`, cartDto, {
       headers: this.createAuthorizationHeader(),
     });
@@ -34,6 +34,38 @@ export class CustomerService {
   getCartByUserId() {
     const userId = UserStorageService.getUserId();
     return this.http.get(`${BASE_URL}/api/customer/cart/${userId}`, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
+  applyCoupon(code: string) {
+    const userId = UserStorageService.getUserId();
+    return this.http.get(
+      `${BASE_URL}/api/customer/applycoupon/${userId}/${code}`,
+      {
+        headers: this.createAuthorizationHeader(),
+      }
+    );
+  }
+
+  increaseProductQuantity(productId: string) {
+    const cartDto = {
+      productId: productId,
+      userId: UserStorageService.getUserId(),
+    };
+
+    return this.http.post(`${BASE_URL}/api/customer/addition`, cartDto, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
+  decreaseProductQuantity(productId: string) {
+    const cartDto = {
+      productId: productId,
+      userId: UserStorageService.getUserId(),
+    };
+
+    return this.http.post(`${BASE_URL}/api/customer/deduction`, cartDto, {
       headers: this.createAuthorizationHeader(),
     });
   }

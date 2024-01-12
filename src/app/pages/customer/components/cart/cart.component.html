@@ -10,11 +10,11 @@
             <div class="product-name">{{ item.productName }}</div>
             <div class="product-price">{{ item.price | currency }}</div>
             <div class="quantity-controls">
-              <button mat-icon-button [disabled]="item.quantity == 1">
+              <button mat-icon-button [disabled]="item.quantity == 1" (click)="decreaseQuantity(item.productId)">
                 <mat-icon>remove_circle_outline</mat-icon>
               </button>
               <span class="quantity">{{ item.quantity }}</span>
-              <button mat-icon-button>
+              <button mat-icon-button (click)="increaseQuantity(item.productId)">
                 <mat-icon>add_circle_outline</mat-icon>
               </button>
             </div>
@@ -22,16 +22,41 @@
         </div>
       </div>
     </div>
-    <div class="total-price">
-      <span>Total</span>
-      <span>{{ order.totalAmount | currency }}</span>
+    <div class="coupon-container" *ngIf="order.couponName == null">
+      <form [formGroup]="couponForm" (ngSubmit)="applyCoupon()">
+        <mat-form-field appearance="outline">
+          <mat-label>Enter Coupon Code</mat-label>
+          <input
+            matInput
+            type="text"
+            placeholder="Coupon Code"
+            formControlName="code"
+          />
+          <mat-error *ngIf="couponForm.get('code').hasError('required')">
+            Coupon code is required
+          </mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit">
+          Apply Coupon
+        </button>
+      </form>
     </div>
-    <div class="total-price">
-      <span>amount</span>
-      <span>{{ order.amount | currency }}</span>
+    <div class="total-section">
+      <div class="total-price">
+        <span>Total</span>
+        <span>{{ order.totalAmount | currency }}</span>
+      </div>
+      <div class="total-price">
+        <span>Amount</span>
+        <span>{{ order.amount | currency }}</span>
+      </div>
+      <div class="total-price" *ngIf="order.couponName != null">
+        <span>Coupon Applied</span>
+        <span>{{ order.couponName }}</span>
+      </div>
     </div>
-    <div>
-        <button mat-raised-button color="primary">Place Order</button>
+    <div class="order-button">
+      <button mat-raised-button color="primary">Place Order</button>
     </div>
   </div>
 </div>
@@ -39,6 +64,6 @@
 <ng-template #emptyCart>
   <div class="empty-cart">
     <mat-icon>remove_shopping_cart</mat-icon>
-    <span>Nothing to see here</span>
+    <span>Your cart is empty</span>
   </div>
 </ng-template>
