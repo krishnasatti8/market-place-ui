@@ -1,0 +1,63 @@
+<div class="container" style="padding: 30px">
+    <mat-card>
+      <mat-card-content>
+        <table mat-table [dataSource]="myOrders" class="mat-elevation-z8">
+          <!-- trackingId ,userName, Amount ,OrderDescription,Address,date,status, -->
+          <ng-container matColumnDef="trackingId">
+            <th mat-header-cell *matHeaderCellDef>ID</th>
+            <td mat-cell *matCellDef="let order">{{ order.trackingId}}</td>
+          </ng-container>
+
+            <ng-container matColumnDef="Amount">
+                <th mat-header-cell *matHeaderCellDef>Amount</th>
+                <td mat-cell *matCellDef="let order">{{ order.amount | currency}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="description">
+                <th mat-header-cell *matHeaderCellDef>Description</th>
+                <td mat-cell *matCellDef="let order">{{ order.orderDescription}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="Address">
+                <th mat-header-cell *matHeaderCellDef>Address</th>
+                <td mat-cell *matCellDef="let order">{{ order.address}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="date">
+                <th mat-header-cell *matHeaderCellDef>Date</th>
+                <td mat-cell *matCellDef="let order">{{ order.date  | date:'dd/MM/yyyy'}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef>Status</th>
+                <td mat-cell *matCellDef="let order">{{ order.orderStatus}}</td>
+            </ng-container>
+
+            <div matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef>Action</th>
+                <td mat-cell *matCellDef="let order">
+                    <!-- <button mat-raised-button color="primary" [mat-menu-trigger-for]="menu">Action</button>
+                    <mat-menu #menu="matMenu">
+                       <span>
+                        <span>
+                            <button mat-menu-item (click)="updateOrderStatus(order.id,'Shipped')" >Shipped</button>
+                        </span>
+                        <span>
+                            <button mat-menu-item (click)="updateOrderStatus(order.id,'Delivered')">Delivered</button>
+                       </span>
+                    </span>
+                         
+                    </mat-menu> -->
+                </td>
+
+            </div>
+
+            <tr mat-header-row *matHeaderRowDef="['trackingId','Amount','description','Address','date','status','action']"></tr>
+
+            <tr mat-row *matRowDef="let row; columns: ['trackingId','Amount','description','Address','date','status','action']"></tr>
+
+        </table>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  

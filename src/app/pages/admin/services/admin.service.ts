@@ -62,6 +62,13 @@ export class AdminService {
     });
   }
 
+  postFAQ(productId: any, faq: any) {
+    return this.http.post(`${BASE_URL}/api/admin/product/faq/${productId}`, faq, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
+
   updateOrderStatus(orderId: any, status: any) {
     return this.http.get(
       `${BASE_URL}/api/admin/updateorderstatus/${orderId}/${status}`,

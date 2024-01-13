@@ -29,7 +29,6 @@ export class MyOrdersComponent implements OnInit {
     this.customerService.getOrders().subscribe((res: any) => {
       this.myOrders = res; 
       console.log(this.myOrders);
-      
     });
   }
 }

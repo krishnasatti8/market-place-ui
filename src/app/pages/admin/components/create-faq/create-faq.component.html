@@ -1,0 +1,25 @@
+<div class="container">
+    <h2>Post FAQ</h2>
+    <form [formGroup]="faqForm" (ngSubmit)="onSubmit()">
+        <!-- question textarea answer textarea -->
+
+        <mat-form-field appearance="outline">
+            <mat-label>Question</mat-label>
+            <textarea matInput placeholder="Question" formControlName="question"></textarea>
+            <mat-error *ngIf="faqForm.controls['question'].hasError('required')">
+                Question is required
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Answer</mat-label>
+            <textarea matInput placeholder="Answer" formControlName="answer"></textarea>
+            <mat-error *ngIf="faqForm.controls['answer'].hasError('required')">
+                Answer is required
+            </mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+
+    </form>
+</div>

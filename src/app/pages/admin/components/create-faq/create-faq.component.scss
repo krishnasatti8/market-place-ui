@@ -1,0 +1,43 @@
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 8px;
+  
+    h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+  
+    form {
+      display: flex;
+      flex-direction: column;
+  
+      mat-form-field {
+        margin-bottom: 20px;
+        width: 100%;
+  
+        textarea {
+          width: 100%;
+          resize: vertical;
+        }
+  
+        mat-label {
+          color: #333;
+        }
+  
+        mat-error {
+          color: red;
+          font-size: 12px;
+          margin-top: 4px;
+        }
+      }
+  
+      button {
+        align-self: flex-start;
+      }
+    }
+  }
+  

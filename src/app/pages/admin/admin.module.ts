@@ -12,6 +12,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CreateCouponComponent } from './components/create-coupon/create-coupon.component';
 import { CouponsComponent } from './components/coupons/coupons.component';
 import { OrdersComponent } from './components/orders/orders.component';
+import { CreateFaqComponent } from './components/create-faq/create-faq.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { OrdersComponent } from './components/orders/orders.component';
     CreateProductComponent,
     CreateCouponComponent,
     CouponsComponent,
-    OrdersComponent
+    OrdersComponent,
+    CreateFaqComponent
   ],
   imports: [
     CommonModule,

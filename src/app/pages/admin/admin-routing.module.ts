@@ -7,6 +7,7 @@ import { CreateProductComponent } from './components/create-product/create-produ
 import { CreateCouponComponent } from './components/create-coupon/create-coupon.component';
 import { CouponsComponent } from './components/coupons/coupons.component';
 import { OrdersComponent } from './components/orders/orders.component';
+import { CreateFaqComponent } from './components/create-faq/create-faq.component';
 
 const routes: Routes = [
   { path: '', component: AdminComponent },
@@ -33,7 +34,10 @@ const routes: Routes = [
   {
     path: 'orders',
     component: OrdersComponent,
-  },
+  },{
+    path: 'faq/:productId',
+    component: CreateFaqComponent,
+  }
 ];
 
 @NgModule({
