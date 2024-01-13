@@ -6,6 +6,7 @@ import { CreateCategoryComponent } from './components/create-category/create-cat
 import { CreateProductComponent } from './components/create-product/create-product.component';
 import { CreateCouponComponent } from './components/create-coupon/create-coupon.component';
 import { CouponsComponent } from './components/coupons/coupons.component';
+import { OrdersComponent } from './components/orders/orders.component';
 
 const routes: Routes = [
   { path: '', component: AdminComponent },
@@ -28,6 +29,10 @@ const routes: Routes = [
   {
     path: 'coupons',
     component: CouponsComponent,
+  },
+  {
+    path: 'orders',
+    component: OrdersComponent,
   },
 ];
 

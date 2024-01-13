@@ -24,38 +24,41 @@
         <mat-list-item *ngIf="isAdminLoggedIn" routerLink="/admin/dashboard" routerLinkActive="active">
           <button mat-button><mat-icon>dashboard</mat-icon>DashBoard</button>
         </mat-list-item>
-  
-        <mat-list-item *ngIf="isAdminLoggedIn" routerLink="/admin/analytics" routerLinkActive="active">
-          <button mat-button><mat-icon>analytics</mat-icon>Analytics</button>
-  
-        </mat-list-item>
-  
+        
         <mat-list-item *ngIf="isAdminLoggedIn" routerLink="/admin/create-category" routerLinkActive="active">
-          <button mat-button><mat-icon>category</mat-icon>Category</button>
+          <button mat-button><mat-icon>category</mat-icon>Post Category</button>
         </mat-list-item>
-  
+        
         <mat-list-item *ngIf="isAdminLoggedIn" routerLink="/admin/create-product" routerLinkActive="active">
           <button mat-button><mat-icon>shopping_cart</mat-icon>Post Product</button>
         </mat-list-item>
+        
+        <mat-list-item *ngIf="isAdminLoggedIn" routerLink="/admin/create-coupon" routerLinkActive="active">
+          <button mat-button><mat-icon>shopping_cart</mat-icon>Post Coupon</button>
+        </mat-list-item>
+  
+      
+  
   
         <mat-list-item *ngIf="isAdminLoggedIn" routerLink="/admin/orders" routerLinkActive="active">
           <button mat-button><mat-icon>shopping_cart</mat-icon>Orders</button>
         </mat-list-item>
   
-        <mat-list-item *ngIf="isAdminLoggedIn" routerLink="/admin/create-coupon" routerLinkActive="active">
-          <button mat-button><mat-icon>shopping_cart</mat-icon>Post Coupon</button>
-        </mat-list-item>
   
         <mat-list-item *ngIf="isAdminLoggedIn" routerLink="/admin/coupons" routerLinkActive="active">
           <button mat-button><mat-icon>shopping_cart</mat-icon>Coupons</button>
+        </mat-list-item>
+
+        <mat-list-item *ngIf="isAdminLoggedIn" routerLink="/admin/analytics" routerLinkActive="active">
+          <button mat-button><mat-icon>analytics</mat-icon>Analytics</button>
         </mat-list-item>
 
         <mat-list-item  *ngIf="isCustomerLoggedIn" routerLink="/customer/dashboard" routerLinkActive="active">
           <button mat-button><mat-icon>dashboard</mat-icon>DashBoard</button>
         </mat-list-item>
   
-        <mat-list-item *ngIf="isCustomerLoggedIn" routerLink="/customer/orders" routerLinkActive="active">
-          <button mat-button><mat-icon>shopping_cart</mat-icon>Orders</button>
+        <mat-list-item *ngIf="isCustomerLoggedIn" routerLink="/customer/my-orders" routerLinkActive="active">
+          <button mat-button><mat-icon>shopping_cart</mat-icon>My Orders</button>
         </mat-list-item>
   
         <mat-list-item *ngIf="isCustomerLoggedIn" routerLink="/customer/wishlist" routerLinkActive="active">

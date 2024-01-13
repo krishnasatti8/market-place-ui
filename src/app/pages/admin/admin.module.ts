@@ -11,6 +11,7 @@ import { CreateProductComponent } from './components/create-product/create-produ
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CreateCouponComponent } from './components/create-coupon/create-coupon.component';
 import { CouponsComponent } from './components/coupons/coupons.component';
+import { OrdersComponent } from './components/orders/orders.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { CouponsComponent } from './components/coupons/coupons.component';
     CreateCategoryComponent,
     CreateProductComponent,
     CreateCouponComponent,
-    CouponsComponent
+    CouponsComponent,
+    OrdersComponent
   ],
   imports: [
     CommonModule,

@@ -56,6 +56,21 @@ export class AdminService {
     });
   }
 
+  getPlacedOrders() {
+    return this.http.get(`${BASE_URL}/api/admin/placedorders`, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
+  updateOrderStatus(orderId: any, status: any) {
+    return this.http.get(
+      `${BASE_URL}/api/admin/updateorderstatus/${orderId}/${status}`,
+      {
+        headers: this.createAuthorizationHeader(),
+      }
+    );
+  }
+
   createAuthorizationHeader() {
     return new HttpHeaders().set(
       'Authorization',

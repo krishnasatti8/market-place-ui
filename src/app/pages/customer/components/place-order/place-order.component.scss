@@ -1,0 +1,41 @@
+.container {
+    padding: 30px;
+
+}
+
+mat-card-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 1em;
+}
+
+mat-card-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+mat-form-field {
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+.button-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+    /* Push the button row to the bottom */
+}
+
+.order-button,
+.close-button {
+    width: 48%;
+}
+
+/* Add any additional styling you need based on your design preferences */

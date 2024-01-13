@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
+import { PlaceOrderComponent } from '../place-order/place-order.component';
 
 @Component({
   selector: 'app-cart',
@@ -98,5 +99,11 @@ export class CartComponent implements OnInit {
         });
       }
     );
+  }
+  placeOrder() {
+    this.dilog.open(PlaceOrderComponent, {
+      width: '500px',
+      height: 'auto',
+    })
   }
 }

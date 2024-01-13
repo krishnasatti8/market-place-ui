@@ -70,6 +70,20 @@ export class CustomerService {
     });
   }
 
+  placeOrder(orderDto: any) {
+    orderDto.userId = UserStorageService.getUserId();
+    return this.http.post(`${BASE_URL}/api/customer/placeorder`, orderDto, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
+  getOrders() {
+    const userId = UserStorageService.getUserId();
+    return this.http.get(`${BASE_URL}/api/customer/myorders/${userId}`, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
   createAuthorizationHeader() {
     return new HttpHeaders().set(
       'Authorization',
