@@ -78,6 +78,22 @@ export class AdminService {
     );
   }
 
+  getProductById(productId: any) {
+    return this.http.get(`${BASE_URL}/api/admin/product/${productId}`, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
+  updateProduct(productId: any, product: any) {
+    return this.http.put(
+      `${BASE_URL}/api/admin/updateproduct/${productId}`,
+      product,
+      {
+        headers: this.createAuthorizationHeader(),
+      }
+    );
+  }
+
   createAuthorizationHeader() {
     return new HttpHeaders().set(
       'Authorization',
