@@ -22,7 +22,7 @@
   .product-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: start;
+    justify-content: flex-start;
   }
   
   .product-card {
@@ -35,6 +35,7 @@
       position: relative;
       overflow: hidden;
       padding: 10px;
+      cursor: pointer;
   
       img {
         width: 100%;

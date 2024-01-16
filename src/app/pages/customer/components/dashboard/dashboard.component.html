@@ -15,7 +15,7 @@
 
 <div class="product-list">
   <mat-card class="product-card" *ngFor="let product of products">
-    <div class="product-image">
+    <div class="product-image" routerLink="/customer/product-details/{{product.id}}">
       <img [src]="product.processedImage" alt="product-image" />
     </div>
     <div class="product-info">

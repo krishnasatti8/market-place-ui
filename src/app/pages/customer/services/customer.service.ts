@@ -90,6 +90,21 @@ export class CustomerService {
     });
   }
 
+  createReview(reviewDto: any) {
+    return this.http.post(`${BASE_URL}/api/customer/createreview`, reviewDto, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
+  getProductDetails(productId: any) {
+    return this.http.get(
+      `${BASE_URL}/api/customer/productdetails/${productId}`,
+      {
+        headers: this.createAuthorizationHeader(),
+      }
+    );
+  }
+
   createAuthorizationHeader() {
     return new HttpHeaders().set(
       'Authorization',
