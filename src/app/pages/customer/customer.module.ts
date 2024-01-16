@@ -10,6 +10,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CartComponent } from './components/cart/cart.component';
 import { PlaceOrderComponent } from './components/place-order/place-order.component';
 import { MyOrdersComponent } from './components/my-orders/my-orders.component';
+import { OrderDetailsComponent } from './components/order-details/order-details.component';
+import { ReviewComponent } from './components/review/review.component';
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import { MyOrdersComponent } from './components/my-orders/my-orders.component';
     DashboardComponent,
     CartComponent,
     PlaceOrderComponent,
-    MyOrdersComponent
+    MyOrdersComponent,
+    OrderDetailsComponent,
+    ReviewComponent
   ],
   imports: [
     CommonModule,

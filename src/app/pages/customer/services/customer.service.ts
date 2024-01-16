@@ -84,6 +84,12 @@ export class CustomerService {
     });
   }
 
+  getOrderDetails(orderId: any) {
+    return this.http.get(`${BASE_URL}/api/customer/orderdetails/${orderId}`, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
   createAuthorizationHeader() {
     return new HttpHeaders().set(
       'Authorization',
