@@ -20,12 +20,24 @@ export class UserStorageService {
     window.localStorage.setItem(USER, JSON.stringify(user));
   }
 
+  public saveExpirationDate(expirationDate: string): void {
+    window.localStorage.setItem('expirationDate', expirationDate);
+  }
+
   static getToken(): string {
     return window.localStorage.getItem(TOKEN);
   }
 
-  static getUser(): any { 
+  static getUser(): any {
     return JSON.parse(window.localStorage.getItem(USER));
+  }
+
+  static hasTokenExpired() {
+    const user = this.getUser();
+    if (user === null) {
+      return true;
+    }
+    return user.expirationDate < new Date().toISOString();
   }
 
   static getUserId(): String {
@@ -49,7 +61,7 @@ export class UserStorageService {
       return false;
     }
     const role = this.getUserRole();
-    return role === 'ADMIN';
+    return role === 'ADMIN' && !this.hasTokenExpired();
   }
 
   static isCustomerLoggedIn(): boolean {
@@ -57,7 +69,7 @@ export class UserStorageService {
       return false;
     }
     const role = this.getUserRole();
-    return role === 'CUSTOMER';
+    return role === 'CUSTOMER' && !this.hasTokenExpired();
   }
 
   static singOut(): void {

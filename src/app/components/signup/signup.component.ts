@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
+import { UserStorageService } from 'src/app/services/storage/user-storage.service';
 
 @Component({
   selector: 'app-signup',
@@ -23,11 +23,16 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {
     this.signupForm = this.fb.group({
-      name: ["Krishna Prasad Satti", Validators.required],
-      email: ["krishna@gmail.com", [Validators.required, Validators.email]],
-      password: ["admin", Validators.required],
-      confirmPassword: ["admin", Validators.required],
+      name: ['Krishna Prasad Satti', Validators.required],
+      email: ['krishna@gmail.com', [Validators.required, Validators.email]],
+      password: ['admin', Validators.required],
+      confirmPassword: ['admin', Validators.required],
     });
+    if (UserStorageService.isAdminLoggedIn()) {
+      this.router.navigateByUrl('/admin/dashboard');
+    } else if (UserStorageService.isCustomerLoggedIn()) {
+      this.router.navigateByUrl('/customer/dashboard');
+    }
   }
 
   togglePasswordVisibility() {

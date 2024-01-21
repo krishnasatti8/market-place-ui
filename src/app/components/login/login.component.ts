@@ -23,9 +23,18 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
-      email: ["krishnaadmin@gmail.com", [Validators.required, Validators.email]],
-      password: ["admin", Validators.required],
+      email: [
+        'krishnaadmin@gmail.com',
+        [Validators.required, Validators.email],
+      ],
+      password: ['admin', Validators.required],
     });
+
+    if (UserStorageService.isAdminLoggedIn()) {
+      this.router.navigateByUrl('/admin/dashboard');
+    } else if (UserStorageService.isCustomerLoggedIn()) {
+      this.router.navigateByUrl('/customer/dashboard');
+    }
   }
 
   togglePasswordVisibility() {

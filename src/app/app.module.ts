@@ -11,6 +11,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './components/signup/signup.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TrackOrderComponent } from './components/track-order/track-order.component';
+import { CustomerAuthGuardService } from './guards/customer-auth-guard.service';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -18,8 +20,8 @@ import { TrackOrderComponent } from './components/track-order/track-order.compon
     MenuBarComponent,
     LoginComponent,
     SignupComponent,
-    TrackOrderComponent
-
+    TrackOrderComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,9 +30,9 @@ import { TrackOrderComponent } from './components/track-order/track-order.compon
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

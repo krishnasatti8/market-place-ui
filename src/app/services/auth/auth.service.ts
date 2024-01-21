@@ -32,6 +32,7 @@ export class AuthService {
       })
       .pipe(
         map((response: any) => {
+          console.table(response.body);
           const token = response.headers.get('authorization').substring(7);
           const user = response.body;
           if (token && user) {
