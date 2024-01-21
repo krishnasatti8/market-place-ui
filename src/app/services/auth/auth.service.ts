@@ -43,4 +43,8 @@ export class AuthService {
         })
       );
   }
+
+  getOrderByTrackingId(trackingId: string): Observable<any> {
+    return this.http.get(`${BASIC_URL}/order/${trackingId}`);
+  }
 }

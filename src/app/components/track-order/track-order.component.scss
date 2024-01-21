@@ -1,0 +1,54 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+  
+    form {
+      width: 100%;
+      max-width: 400px; /* Adjust max-width as needed */
+      margin-bottom: 20px;
+  
+      mat-form-field {
+        width: 100%;
+      }
+  
+      button {
+        width: 100%;
+      }
+    }
+  
+    .order-details-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  
+      mat-card {
+        width: 100%;
+        max-width: 800px; /* Adjust max-width as needed */
+      }
+  
+      mat-card-content {
+        .order-details {
+          display: flex;
+          flex-direction: column;
+  
+          .order-details-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+  
+            .order-details-item-label {
+              font-weight: bold;
+              width: 40%;
+            }
+  
+            .order-details-item-value {
+              width: 60%;
+            }
+          }
+        }
+      }
+    }
+  }
+  

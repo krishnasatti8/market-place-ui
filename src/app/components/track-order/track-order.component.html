@@ -1,0 +1,64 @@
+<div class="container">
+  <form [formGroup]="searchOrderForm" (submit)="submit()">
+    <mat-form-field appearance="outline">
+      <mat-label>Enter Order ID</mat-label>
+      <input matInput formControlName="trackingId" />
+      <mat-error *ngIf="searchOrderForm.get('trackingId').hasError('required')">
+        Order ID is required
+      </mat-error>
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="searchOrderForm.invalid"
+    >
+      Track Order
+    </button>
+  </form>
+
+  <div class="order-details-container" *ngIf="order">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Order Details</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="order-details">
+          <div class="order-details-item">
+            <div class="order-details-item-label">Order ID</div>
+            <div class="order-details-item-value">{{ order.trackingId }}</div>
+          </div>
+          <div class="order-details-item">
+            <div class="order-details-item-label">Name</div>
+            <div class="order-details-item-value">{{ order.userName }}</div>
+          </div>
+
+          <div class="order-details-item">
+            <div class="order-details-item-label">Address</div>
+            <div class="order-details-item-value">{{ order.address }}</div>
+          </div>
+
+          <div class="order-details-item">
+            <div class="order-details-item-label">Amount</div>
+            <div class="order-details-item-value">
+              {{ order.amount | currency }}
+            </div>
+          </div>
+
+          <div class="order-details-item">
+            <div class="order-details-item-label">Order Status</div>
+            <div class="order-details-item-value">{{ order.orderStatus }}</div>
+          </div>
+
+          <div class="order-details-item">
+            <div class="order-details-item-label">Date</div>
+            <div class="order-details-item-value">
+              {{ order.date | date : "dd/MM/yyyy" }}
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

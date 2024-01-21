@@ -10,13 +10,15 @@ import { MenuBarComponent } from './generic/menu-bar/menu-bar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './components/signup/signup.component';
 import { HttpClientModule } from '@angular/common/http';
+import { TrackOrderComponent } from './components/track-order/track-order.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuBarComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    TrackOrderComponent
 
   ],
   imports: [
