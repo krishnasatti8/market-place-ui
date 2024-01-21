@@ -3,6 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CustomerService } from '../../services/customer.service';
+import { UserStorageService } from 'src/app/services/storage/user-storage.service';
 
 @Component({
   selector: 'app-product-details',
@@ -38,6 +39,33 @@ export class ProductDetailsComponent implements OnInit {
           review.processedImage = 'data:image/jpeg;base64,' + review.byteImage;
           this.reviews.push(review);
         });
+      },
+      (err) => {
+        this.snackBar.open('Internal Error', 'close', {
+          duration: 5000,
+        });
+      }
+    );
+  }
+
+  addToWishlist() {
+    const wishlistDto = {
+      productId: this.productId,
+      userId: UserStorageService.getUserId(),
+    };
+
+    this.customerService.addToWishlist(wishlistDto).subscribe(
+      (res: any) => {
+        if (res.id != null) {
+          this.snackBar.open('Product added to wishlist', 'close', {
+            duration: 5000,
+          });
+          this.router.navigate(['/customer/wishlist']);
+        } else {
+          this.snackBar.open('Product already in wishlist', 'close', {
+            duration: 5000,
+          });
+        }
       },
       (err) => {
         this.snackBar.open('Internal Error', 'close', {

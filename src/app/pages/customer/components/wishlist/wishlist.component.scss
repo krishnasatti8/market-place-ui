@@ -1,0 +1,82 @@
+.center-container {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .product-card {
+    border: 1px solid #ddd;
+    margin: 20px;
+    padding: 20px;
+    display: flex;
+    max-width: 400px; /* Adjust max-width as needed */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+    transition: transform 0.3s ease-in-out; /* Add a smooth transition effect */
+    
+    &:hover {
+      transform: scale(1.05); /* Scale up on hover for a subtle interaction */
+    }
+  
+    .product-image {
+      width: 100px;
+      height: 100px;
+      overflow: hidden;
+      border-radius: 5px;
+      margin-right: 20px;
+  
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  
+    .product-info {
+      flex-grow: 1;
+  
+      .product-name {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+  
+      .product-price {
+        color: #007bff; /* Adjust color for price */
+        font-size: 16px;
+        margin-bottom: 5px;
+      }
+  
+      .product-description {
+        font-size: 14px;
+        color: #555;
+        margin-bottom: 10px;
+      }
+  
+      /* Uncomment the following code if you want to add buttons */
+      /*
+      .product-buttons {
+        display: flex;
+        justify-content: space-between;
+  
+        button {
+          padding: 8px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+  
+        .btn-primary {
+          background-color: #28a745; 
+          color: #fff;
+        }
+  
+        .btn-danger {
+          background-color: #dc3545;
+          color: #fff;
+        }
+      }
+      */
+    }
+  }
+  

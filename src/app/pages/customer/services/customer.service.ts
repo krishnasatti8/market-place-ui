@@ -105,6 +105,23 @@ export class CustomerService {
     );
   }
 
+  addToWishlist(wishlistDto: any) {
+    return this.http.post(
+      `${BASE_URL}/api/customer/addtowishlist`,
+      wishlistDto,
+      {
+        headers: this.createAuthorizationHeader(),
+      }
+    );
+  }
+  
+  getWislistByUserId() {
+    const userId = UserStorageService.getUserId();
+    return this.http.get(`${BASE_URL}/api/customer/fetchwishlist/${userId}`, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
   createAuthorizationHeader() {
     return new HttpHeaders().set(
       'Authorization',
