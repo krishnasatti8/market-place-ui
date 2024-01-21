@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import * as moment from 'moment';
 
 const TOKEN = 'kmart-token';
 const USER = 'kmart-user';
@@ -37,7 +38,14 @@ export class UserStorageService {
     if (user === null) {
       return true;
     }
-    return user.expirationDate < new Date().toISOString();
+
+    const inputDate = moment(
+      user.expirationDate,
+      'ddd MMM DD HH:mm:ss z YYYY',
+      'en'
+    );
+    const currentDate = moment();
+    return currentDate.isAfter(inputDate);
   }
 
   static getUserId(): String {

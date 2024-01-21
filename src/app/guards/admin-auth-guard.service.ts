@@ -27,9 +27,10 @@ export class AdminAuthGuardService implements CanActivate {
     if (UserStorageService.isAdminLoggedIn()) {
       return true;
     }
-    this.snackBar.open('You are not allowed to access this page!', '', {
-      duration: 2000,
+    this.snackBar.open('Please login to access this page!', 'Close', {
+      duration: 5000,
     });
-    return this.router.createUrlTree(['/login']);
+    this.router.navigateByUrl('/login');
+    return false; 
   }
 }

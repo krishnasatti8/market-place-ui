@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import {
   ActivatedRouteSnapshot,
   CanActivate,
@@ -8,12 +9,11 @@ import {
 } from '@angular/router';
 import { Observable } from 'rxjs';
 import { UserStorageService } from '../services/storage/user-storage.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root',
 })
-export class CustomerAuthGuardService implements CanActivate {
+export class LoggedInGuardService implements CanActivate {
   constructor(private router: Router, private snackBar: MatSnackBar) {}
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -23,13 +23,14 @@ export class CustomerAuthGuardService implements CanActivate {
     | UrlTree
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
-    if (UserStorageService.isCustomerLoggedIn()) {
+    if (UserStorageService.isAdminLoggedIn()) {
+      this.router.navigateByUrl('/admin/dashboard');
+      return false;
+    } else if (UserStorageService.isCustomerLoggedIn()) {
+      this.router.navigateByUrl('/customer/dashboard');
+      return false;
+    } else {
       return true;
     }
-    this.snackBar.open('Please login to access this page!', 'Close', {
-      duration: 5000,
-    });
-    this.router.navigateByUrl('/login');
-    return false;
   }
 }

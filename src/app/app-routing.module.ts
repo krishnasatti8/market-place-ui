@@ -6,6 +6,7 @@ import { TrackOrderComponent } from './components/track-order/track-order.compon
 import { CustomerAuthGuardService } from './guards/customer-auth-guard.service';
 import { AdminAuthGuardService } from './guards/admin-auth-guard.service';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { LoggedInGuardService } from './guards/loggedInGuard.service';
 
 const routes: Routes = [
   {
@@ -16,10 +17,12 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    canActivate: [LoggedInGuardService],
   },
   {
     path: 'signup',
     component: SignupComponent,
+    canActivate: [LoggedInGuardService],
   },
   {
     path: 'track-order',

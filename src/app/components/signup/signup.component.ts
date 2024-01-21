@@ -28,11 +28,6 @@ export class SignupComponent implements OnInit {
       password: ['admin', Validators.required],
       confirmPassword: ['admin', Validators.required],
     });
-    if (UserStorageService.isAdminLoggedIn()) {
-      this.router.navigateByUrl('/admin/dashboard');
-    } else if (UserStorageService.isCustomerLoggedIn()) {
-      this.router.navigateByUrl('/customer/dashboard');
-    }
   }
 
   togglePasswordVisibility() {
