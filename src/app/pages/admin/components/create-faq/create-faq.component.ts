@@ -10,9 +10,9 @@ import { AdminService } from '../../services/admin.service';
   styleUrls: ['./create-faq.component.scss'],
 })
 export class CreateFaqComponent implements OnInit {
-
   productId: number = this.activatedRoute.snapshot.params['productId'];
-  faqForm:FormGroup;
+  faqForm: FormGroup;
+  isLoading = false;
 
   constructor(
     private adminServiceService: AdminService,
@@ -24,8 +24,8 @@ export class CreateFaqComponent implements OnInit {
 
   ngOnInit() {
     this.faqForm = this.fb.group({
-      question: [null,Validators.required],
-      answer: [null,Validators.required],
+      question: [null, Validators.required],
+      answer: [null, Validators.required],
     });
   }
 
@@ -33,20 +33,25 @@ export class CreateFaqComponent implements OnInit {
     if (this.faqForm.invalid) {
       return;
     }
-    this.adminServiceService.postFAQ(this.productId,this.faqForm.value,).subscribe(
-      (response: any) => {
-        if(response.id!=null){
-          this.snackBar.open('FAQ created successfully', 'Close', {
+    this.isLoading = true;
+    this.adminServiceService
+      .postFAQ(this.productId, this.faqForm.value)
+      .subscribe(
+        (response: any) => {
+          this.isLoading = false;
+          if (response.id != null) {
+            this.snackBar.open('FAQ created successfully', 'OK', {
+              duration: 5000,
+            });
+            this.router.navigate(['/admin/dashboard']);
+          }
+        },
+        (error) => {
+          this.isLoading=false;
+          this.snackBar.open('Something went wrong', 'OK', {
             duration: 5000,
           });
-          this.router.navigate(['/admin/dashboard']);
         }
-      },
-      (error) => {
-        this.snackBar.open(error.message, 'Close', {
-          duration: 5000,
-        });
-      }
-    );
+      );
   }
 }

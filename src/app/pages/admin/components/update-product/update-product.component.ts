@@ -14,9 +14,10 @@ export class UpdateProductComponent implements OnInit {
   categories: any = [];
   selectedFile: File | null = null;
   imagePreview: string | ArrayBuffer | null = null;
-  productId: number =+this.route.snapshot.params['productId'];
+  productId: number = +this.route.snapshot.params['productId'];
   existingImage: string | null = null;
   imageChanged: boolean = false;
+  isLoading = false;
 
   constructor(
     private adminServiceService: AdminService,
@@ -50,18 +51,32 @@ export class UpdateProductComponent implements OnInit {
   }
 
   getAllCategories() {
-    this.adminServiceService.getAllCategories().subscribe((res) => {
-      this.categories = res;
-    });
+    this.isLoading = true;
+    this.adminServiceService.getAllCategories().subscribe(
+      (res) => {
+        this.isLoading = false;
+        this.categories = res;
+      },
+      (error) => {
+        this.isLoading = false;
+        this.router.navigateByUrl('/admin/dashboard');
+      }
+    );
   }
 
   getProductById() {
-    this.adminServiceService
-      .getProductById(this.productId)
-      .subscribe((res: any) => {
+    this.isLoading = true;
+    this.adminServiceService.getProductById(this.productId).subscribe(
+      (res: any) => {
+        this.isLoading = false;
         this.productForm.patchValue(res);
         this.existingImage = 'data:image/jpeg;base64,' + res.byteImage;
-      });
+      },
+      (error) => {
+        this.isLoading = false;
+        this.router.navigateByUrl('/admin/dashboard');
+      }
+    );
   }
 
   updateProduct() {
@@ -80,18 +95,24 @@ export class UpdateProductComponent implements OnInit {
         this.productForm.get('description')?.value
       );
 
-      this.adminServiceService.updateProduct(this.productId,formData).subscribe((res: any) => {
-        if (res.id != null) {
-          this.snackBar.open('Product Updated Successfully', 'Close', {
-            duration: 5000,
-          });
-          this.router.navigateByUrl('/admin/dashboard');
-        } else {
-          this.snackBar.open(res.message, 'ERROR', {
-            duration: 5000,
-          });
-        }
-      });
+      this.isLoading = true;
+      this.adminServiceService
+        .updateProduct(this.productId, formData)
+        .subscribe(
+          (res: any) => {
+            this.isLoading = false;
+            if (res.id != null) {
+              this.snackBar.open('Product Updated Successfully', 'Close', {
+                duration: 5000,
+              });
+              this.router.navigateByUrl('/admin/dashboard');
+            }
+          },
+          (error) => {
+            this.isLoading = false;
+            this.router.navigateByUrl('/admin/dashboard');
+          }
+        );
     } else {
       for (const key in this.productForm.controls) {
         if (this.productForm.controls.hasOwnProperty(key)) {

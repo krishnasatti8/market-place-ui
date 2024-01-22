@@ -11,7 +11,8 @@ import { Router } from '@angular/router';
 })
 export class CreateCouponComponent implements OnInit {
   couponForm: FormGroup;
-  date= new Date();
+  date = new Date();
+  isLoading = false;
 
   constructor(
     private adminServiceService: AdminService,
@@ -31,20 +32,24 @@ export class CreateCouponComponent implements OnInit {
 
   addCoupon() {
     if (this.couponForm.valid) {
-      this.adminServiceService
-        .createCoupon(this.couponForm.value)
-        .subscribe((res: any) => {
+      this.isLoading = true;
+      this.adminServiceService.createCoupon(this.couponForm.value).subscribe(
+        (res: any) => {
+          this.isLoading = false;
           if (res.id !== null) {
             this.snackBar.open('Coupon Created Successfully', '', {
               duration: 5000,
             });
             this.router.navigate(['/admin/coupons']);
-          } else {
-            this.snackBar.open(res.message, '', {
-              duration: 5000,
-            });
           }
-        });
+        },
+        (error) => {
+          this.isLoading = false;
+          this.snackBar.open('Something went wrong', '', {
+            duration: 5000,
+          });
+        }
+      );
     } else {
       this.couponForm.markAllAsTouched();
     }

@@ -14,6 +14,7 @@ import { CouponsComponent } from './components/coupons/coupons.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { CreateFaqComponent } from './components/create-faq/create-faq.component';
 import { UpdateProductComponent } from './components/update-product/update-product.component';
+import { SpinnerComponent } from 'src/app/generic/spinner/spinner.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { UpdateProductComponent } from './components/update-product/update-produ
     CouponsComponent,
     OrdersComponent,
     CreateFaqComponent,
-    UpdateProductComponent
+    UpdateProductComponent,
+    SpinnerComponent
   ],
   imports: [
     CommonModule,

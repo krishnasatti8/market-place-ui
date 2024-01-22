@@ -1,4 +1,86 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Courier, monospace;
+}
+
+
+.kmart-button-1 {
+    width: 120px;
+    height: 40px;
+    background-color: rgb(60, 149, 60);
+    border: 1px solid black;
+    color: white;
+    border-radius: 18px;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.kmart-button-1:hover {
+    transition-delay: 0.2s;
+    background-color: rgb(171, 216, 153);
+    border-radius: 20px;
+    border: 1px solid rgb(19, 43, 19);
+
+}
+
+
+.kmart-button-2 {
+    height: 40px;
+    border: none;
+    color: black;
+    font-size: 15px;
+    padding: 0px 20px;
+    margin-right: 10px;
+    background: transparent;
+    // font-weight: ;
+
+}
+
+.kmart-button-2:hover {
+    transition-delay: 0.2s;
+    background-color: aliceblue;
+    color: rgb(60, 149, 60);
+    border-radius: 20px;
+
+}
+
+
+.kmart-button-disabled {
+    opacity: 0.5;
+
+}
+
+.kmart-button-disabled:hover {
+    background-color: rgb(60, 149, 60);
+    color: white;
+}
+
+mat-icon {
+    margin-left: 2px;
+}
+
+
+.spinner-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+
+.blur {
+    opacity: 0.3;
+}
+
+mat-card {
+
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+}

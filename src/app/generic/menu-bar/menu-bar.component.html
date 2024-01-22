@@ -5,9 +5,9 @@
   <span>K-Mart</span>
   <span class="example-spacer"></span>
   <div *ngIf="!isAdminLoggedIn && !isCustomerLoggedIn">
-    <button style="margin-right: 10px;" mat-raised-button color="accent" routerLink="track-order">Track Order</button>
-    <button style="margin-right: 10px;" mat-raised-button color="accent" routerLink="signup">Sign Up</button>
-    <button mat-raised-button color="accent" routerLink="login">Login</button>
+    <button class="kmart-button-1" routerLink="track-order">Track Order</button>
+    <button class="kmart-button-1" routerLink="signup">Sign Up</button>
+    <button class="kmart-button-1" routerLink="login">Login</button>
   </div>
 
   <div *ngIf="isCustomerLoggedIn">

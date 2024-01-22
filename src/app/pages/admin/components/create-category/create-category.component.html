@@ -1,4 +1,11 @@
-<div class="container">
+<div class="spinner-container" *ngIf="isLoading">
+   <app-spinner></app-spinner>
+ </div>
+ 
+
+
+
+<div class="container" [ngClass]="isLoading ? 'blur' : ''">
     <mat-card>
       <mat-card-title>Category</mat-card-title>
       <mat-card-content> 
@@ -19,9 +26,10 @@
                               </mat-error>
                    </mat-form-field>
   
-                   <button mat-raised-button color="primary" type="submit" [disabled]="categoryForm.invalid" (click)="onSubmit()">Add</button>
+                   <button class="kmart-button-1"  type="submit" [ngClass]="categoryForm.invalid ?'kmart-button-disabled':''" [disabled]="categoryForm.invalid" (click)="onSubmit()">Add</button>
              </form>
       </mat-card-content>
      </mat-card>
   </div>
+
   

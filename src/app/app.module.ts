@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TrackOrderComponent } from './components/track-order/track-order.component';
 import { CustomerAuthGuardService } from './guards/customer-auth-guard.service';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { SpinnerComponent } from './generic/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     SignupComponent,
     TrackOrderComponent,
     NotFoundComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,

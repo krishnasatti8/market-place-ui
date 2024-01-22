@@ -13,6 +13,7 @@ import { UserStorageService } from 'src/app/services/storage/user-storage.servic
 export class SignupComponent implements OnInit {
   signupForm!: FormGroup;
   hidePassword = true;
+  isLoading = false;
 
   constructor(
     private fb: FormBuilder,
@@ -46,8 +47,10 @@ export class SignupComponent implements OnInit {
       return;
     }
 
+    this.isLoading = true;
     this.authService.register(this.signupForm.value).subscribe(
       (response: any) => {
+        this.isLoading = false;
         this.snackBar.open('Sign Up successful!', 'Close', {
           duration: 5000,
           panelClass: ['success-snackbar'],
@@ -55,6 +58,7 @@ export class SignupComponent implements OnInit {
         this.router.navigateByUrl('/login');
       },
       (error: any) => {
+        this.isLoading = false;
         this.snackBar.open('Sign Up failed! Please try again', 'Close', {
           duration: 5000,
           panelClass: ['error-snackbar'],

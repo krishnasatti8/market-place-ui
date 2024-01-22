@@ -1,25 +1,16 @@
-<div class="container">
-    <h2>Update Product</h2>
-    <form [formGroup]="productForm" (ngSubmit)="updateProduct()">
-      <div class="file-upload-container">
-        <label class="file-upload-label">
-          <span>Select a file</span>
-          <input type="file" id="fileInput" (change)="onFileSelected($event)" hidden />
-          <mat-icon>attach_file</mat-icon>
-        </label>
-  
-        <div *ngIf="selectedFile" class="image-preview">
-          <div class="circle-image">
-            <img [src]="imagePreview" alt="product image" class="preview-image" />
-          </div>
-        </div>
+<div class="spinner-container" *ngIf="isLoading">
+  <app-spinner></app-spinner>
+</div>
 
-        <div *ngIf="existingImage" class="image-preview">
-            <div class="circle-image">
-              <img [src]="existingImage" alt="product image" class="preview-image" />
-            </div>
-          </div>
-      </div>
+<div class="container" [ngClass]="isLoading ? 'blur' : ''">
+  <mat-card>
+    <mat-card-title>Update Product</mat-card-title>
+    <mat-card-content>
+    <form [formGroup]="productForm" (ngSubmit)="updateProduct()">
+      <div class="product-details-container">
+        <div class="fields-container">
+
+       
           <mat-form-field appearance="outline">
               <mat-label>Select a Category</mat-label>
               <mat-select formControlName="categoryId"  name="categoryId">
@@ -56,9 +47,35 @@
                   Please enter a valid description
               </mat-error>
           </mat-form-field>
+
+        </div>
+
+          <div class="file-upload-container">
+            <label class="file-upload-label">
+              <span>Select a file</span>
+              <input type="file" id="fileInput" (change)="onFileSelected($event)" hidden />
+              <mat-icon>attach_file</mat-icon>
+            </label>
+      
+            <div *ngIf="selectedFile" class="image-preview">
+              <div class="circle-image">
+                <img [src]="imagePreview" alt="product image" class="preview-image" />
+              </div>
+            </div>
+    
+            <div *ngIf="existingImage" class="image-preview">
+                <div class="circle-image">
+                  <img [src]="existingImage" alt="product image" class="preview-image" />
+                </div>
+              </div>
+          </div>
   
-          <button mat-raised-button color="primary" type="submit" [disabled]="productForm.invalid">Update</button>
-  
+          <button  class="kmart-button-1"
+          type="submit"
+          [ngClass]="productForm.invalid ? 'kmart-button-disabled' : ''" [disabled]="productForm.invalid">Update</button>
+        </div>
     </form>
+    </mat-card-content>
+  </mat-card>
   </div>
   

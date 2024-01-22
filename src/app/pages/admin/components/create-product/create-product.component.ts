@@ -14,6 +14,7 @@ export class CreateProductComponent implements OnInit {
   categories: any = [];
   selectedFile: File | null = null;
   imagePreview: string | ArrayBuffer | null = null;
+  isLoading = false;
 
   constructor(
     private adminServiceService: AdminService,
@@ -25,7 +26,7 @@ export class CreateProductComponent implements OnInit {
   ngOnInit() {
     this.productForm = this.fb.group({
       categoryId: [null, Validators.required],
-      name: ["HRX", Validators.required],
+      name: ['HRX', Validators.required],
       price: [999, Validators.required],
       description: ['Tshirt', Validators.required],
     });
@@ -43,9 +44,17 @@ export class CreateProductComponent implements OnInit {
   }
 
   getAllCategories() {
-    this.adminServiceService.getAllCategories().subscribe((res) => {
-      this.categories = res;
-    });
+    this.isLoading = true;
+    this.adminServiceService.getAllCategories().subscribe(
+      (res) => {
+        this.isLoading = false;
+        this.categories = res;
+      },
+      (error) => {
+        this.isLoading = false;
+        this.router.navigateByUrl('/admin/dashboard');
+      }
+    );
   }
 
   addProduct() {
@@ -60,18 +69,24 @@ export class CreateProductComponent implements OnInit {
       );
       formData.append('image', this.selectedFile);
 
-      this.adminServiceService.createProduct(formData).subscribe((res: any) => {
-        if (res.id != null) {
-          this.snackBar.open('Product Created Successfully', 'Close', {
-            duration: 5000,
-          });
-          this.router.navigateByUrl('/admin/dashboard');
-        } else {
-          this.snackBar.open(res.message, 'ERROR', {
+      this.isLoading = true;
+      this.adminServiceService.createProduct(formData).subscribe(
+        (res: any) => {
+          if (res.id != null) {
+            this.isLoading = false;
+            this.snackBar.open('Product Created Successfully', 'Close', {
+              duration: 5000,
+            });
+            this.router.navigateByUrl('/admin/dashboard');
+          }
+        },
+        (error) => {
+          this.isLoading = false;
+          this.snackBar.open('Something went wrong!', 'OK', {
             duration: 5000,
           });
         }
-      });
+      );
     } else {
       for (const key in this.productForm.controls) {
         if (this.productForm.controls.hasOwnProperty(key)) {

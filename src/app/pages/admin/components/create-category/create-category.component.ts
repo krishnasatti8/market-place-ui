@@ -11,6 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class CreateCategoryComponent implements OnInit {
   categoryForm: FormGroup;
+  isLoading = false;
 
   constructor(
     private adminServiceService: AdminService,
@@ -21,25 +22,29 @@ export class CreateCategoryComponent implements OnInit {
 
   ngOnInit() {
     this.categoryForm = this.fb.group({
-      name: ["Clothes", Validators.required],
-      description: ["clothes", Validators.required],
+      name: ['Clothes', Validators.required],
+      description: ['clothes', Validators.required],
     });
   }
 
   onSubmit() {
-    this.adminServiceService
-      .createCategory(this.categoryForm.value)
-      .subscribe((res: any) => {
+    this.isLoading = true;
+    this.adminServiceService.createCategory(this.categoryForm.value).subscribe(
+      (res: any) => {
+        this.isLoading = false;
         if (res.id != null) {
-          this.snackBar.open('Category created successfully', 'Ok', {
+          this.snackBar.open('Category created successfully', 'OK', {
             duration: 5000,
           });
           this.router.navigateByUrl('/admin/dashboard');
-        } else {
-          this.snackBar.open(res.message, 'Close', {
-            duration: 5000,
-          });
         }
-      });
+      },
+      (error) => {
+        this.isLoading = false;
+        this.snackBar.open('Something went wrong!', 'OK', {
+          duration: 5000,
+        });
+      }
+    );
   }
 }

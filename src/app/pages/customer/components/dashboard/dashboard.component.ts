@@ -41,6 +41,10 @@ export class DashboardComponent implements OnInit {
   searchProducts() {
     this.products = [];
     const title = this.searchForm.get('search')?.value;
+    if(title === null || title === '') {
+      this.getAllProducts();
+      return;
+    }
     this.customerService.getAllProductsByName(title).subscribe((res: any) => {
       res.forEach((element: any) => {
         element.processedImage = `data:image/jpeg;base64,${element.byteImage}`;
