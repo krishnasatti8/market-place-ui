@@ -14,7 +14,7 @@ import { CouponsComponent } from './components/coupons/coupons.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { CreateFaqComponent } from './components/create-faq/create-faq.component';
 import { UpdateProductComponent } from './components/update-product/update-product.component';
-import { SpinnerComponent } from 'src/app/generic/spinner/spinner.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -28,7 +28,6 @@ import { SpinnerComponent } from 'src/app/generic/spinner/spinner.component';
     OrdersComponent,
     CreateFaqComponent,
     UpdateProductComponent,
-    SpinnerComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +35,8 @@ import { SpinnerComponent } from 'src/app/generic/spinner/spinner.component';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule,
   ]
 })
 export class AdminModule { }

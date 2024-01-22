@@ -13,7 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { TrackOrderComponent } from './components/track-order/track-order.component';
 import { CustomerAuthGuardService } from './guards/customer-auth-guard.service';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { SpinnerComponent } from './generic/spinner/spinner.component';
+import { SharedModule } from './shared/shared.module';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +24,6 @@ import { SpinnerComponent } from './generic/spinner/spinner.component';
     SignupComponent,
     TrackOrderComponent,
     NotFoundComponent,
-    SpinnerComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +33,7 @@ import { SpinnerComponent } from './generic/spinner/spinner.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

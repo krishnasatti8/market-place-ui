@@ -14,6 +14,8 @@ import { OrderDetailsComponent } from './components/order-details/order-details.
 import { ReviewComponent } from './components/review/review.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { SpinnerComponent } from 'src/app/shared/spinner/spinner.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -34,7 +36,8 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule,
   ]
 })
 export class CustomerModule { }

@@ -38,7 +38,7 @@
                 <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
                 <mat-cell *matCellDef="let order">
                   <span *ngIf="order.orderStatus=='Delivered'">
-                  <button mat-raised-button color="primary" type="submit" routerLink="/customer/order-details/{{order.id}}">View</button>
+                  <button class="kmart-button-1" type="submit" routerLink="/customer/order-details/{{order.id}}">View</button>
                 </span>
                 </mat-cell>
             </ng-container>

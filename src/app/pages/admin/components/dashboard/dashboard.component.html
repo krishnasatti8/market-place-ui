@@ -1,57 +1,68 @@
-<form [formGroup]="searchForm" class="search-form" (submit)="searchProducts()">
-  <mat-form-field appearance="outline" class="search-field">
-    <mat-label>Search</mat-label>
-    <input matInput formControlName="search" />
-    <button mat-button matSuffix color="primary" [disabled]="searchForm.invalid">
-      <mat-icon>search</mat-icon>
-    </button>
-  </mat-form-field>
-</form>
+<div class="spinner-container" *ngIf="isLoading">
+  <app-spinner></app-spinner>
+</div>
 
-<div class="product-list">
-  <mat-card class="product-card" *ngFor="let product of products">
-    <div class="product-image">
-      <img [src]="product.processedImage" alt="product-image" />
-    </div>
-    <div class="product-info">
-      <h2 class="product-name">{{ product.name }}</h2>
-      <p class="product-description">{{ product.description }}</p>
-      <mat-divider></mat-divider>
+<div class="container" [ngClass]="isLoading ? 'blur' : ''">
+  <form
+    [formGroup]="searchForm"
+    class="search-form"
+    (submit)="searchProducts()"
+  >
+    <mat-form-field appearance="outline" class="search-field">
+      <mat-label>Search</mat-label>
+      <input matInput formControlName="search" (input)="searchProducts()" />
+      <button mat-button matSuffix color="primary">
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+  </form>
 
-      <div class="product-info">
-        <div class="info-row">
-          <span class="info-label">Price:</span>
-          <span class="info-value">{{ product.price }}</span>
+  <div class="products-container">
+    <mat-card *ngFor="let product of products">
+      <mat-card-content>
+        <div class="product-card">
+          <div class="product-image">
+            <img [src]="product.processedImage" alt="product image" />
+          </div>
+          <div class="product-info">
+            <div class="details">
+              <div class="row">
+                <div class="product-name">{{ product.name }}</div>
+                <div class="product-price">{{ product.price | currency }}</div>
+              </div>
+
+              <div class="row">
+                <div class="product-category">
+                  <strong>Category : </strong> {{ product.categoryName }}
+                </div>
+                <div class="product-description">
+                  {{ product.description }}
+                </div>
+              </div>
+            </div>
+            <div class="product-actions">
+              <button
+              class="kmart-button-4"
+                [routerLink]="'/admin/faq/' + product.id"
+              >
+                FAQ
+              </button>
+              <button
+              class="kmart-button-1"
+                [routerLink]="'/admin/update-product/' + product.id"
+              >
+                Update
+              </button>
+              <button
+                class="kmart-button-3"
+                (click)="deleteProduct(product.id)"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
         </div>
-        <div class="info-row">
-          <span class="info-label">Category:</span>
-          <span class="info-value">{{ product.categoryName }}</span>
-        </div>
-      </div>
-
-      <mat-divider></mat-divider>
-
-      <div class="product-actions">
-        <button
-          mat-raised-button
-          color="primary"
-          class="update-button"
-          [routerLink]="'/admin/faq/' + product.id"
-        >
-          FAQ
-        </button>
-        <button
-          mat-raised-button
-          color="primary"
-          class="update-button"
-          [routerLink]="'/admin/update-product/' + product.id"
-        >
-          Update
-        </button>
-        <button mat-raised-button color="warn" class="delete-button" (click)="deleteProduct(product.id)">
-          Delete
-        </button>
-      </div>
-    </div>
-  </mat-card>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>

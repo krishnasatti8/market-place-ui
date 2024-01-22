@@ -1,48 +1,50 @@
-<div class="container">
-  <form [formGroup]="searchForm" class="search-form">
-    <mat-form-field appearance="outline" class="search-field">
-      <mat-label>Search</mat-label>
-      <input matInput formControlName="search" (input)="searchProducts()" />
-    </mat-form-field>
-  </form>
+<div class="spinner-container" *ngIf="isLoading">
+  <app-spinner></app-spinner>
+</div>
 
-  <div class="product-list">
-    <mat-card class="product-card" *ngFor="let product of products">
-      <div
-        class="product-image"
-        routerLink="/customer/product-details/{{ product.id }}"
-      >
-        <img [src]="product.processedImage" alt="product-image" />
-      </div>
-      <div class="product-info">
-        <h2 class="product-name">{{ product.name }}</h2>
-        <p class="product-description">{{ product.description }}</p>
-        <mat-divider></mat-divider>
 
-        <div class="product-info">
-          <div class="info-row">
-            <span class="info-label">Price:</span>
-            <span class="info-value">{{ product.price }}</span>
-          </div>
-          <div class="info-row">
-            <span class="info-label">Category:</span>
-            <span class="info-value">{{ product.categoryName }}</span>
-          </div>
+
+
+<div class="container" [ngClass]="isLoading ? 'blur' : ''">
+
+<form [formGroup]="searchForm" class="search-form" (submit)="searchProducts()">
+  <mat-form-field appearance="outline" class="search-field">
+    <mat-label>Search</mat-label>
+    <input matInput formControlName="search" (input)="searchProducts()" />
+    <button mat-button matSuffix color="primary">
+      <mat-icon>search</mat-icon>
+    </button>
+  </mat-form-field>
+</form>
+
+<div class="products-container">
+  <mat-card *ngFor="let product of products">
+    <mat-card-content>
+      <div class="product-card">
+        <div
+          class="product-image"
+          routerLink="/customer/product-details/{{ product.id }}"
+        >
+          <img [src]="product.processedImage" alt="product image" />
         </div>
-
-        <mat-divider></mat-divider>
-
-        <div class="product-actions">
-          <button
-            mat-raised-button
-            color="primary"
-            class="update-button"
-            (click)="addToCart(product.id)"
-          >
+        <div class="product-info">
+          <div class="details">
+            <div class="product-name">{{ product.name }}</div>
+            <div class="product-price">{{ product.price | currency }}</div>
+            <div class="product-description">
+              {{ product.description }}
+            </div>
+            <div class="product-category">
+              <strong>Category : </strong> {{ product.categoryName }}
+            </div>
+          </div>
+          <button class="kmart-button-1" (click)="addToCart(product.id)">
             Add to cart
           </button>
         </div>
       </div>
-    </mat-card>
-  </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
 </div>

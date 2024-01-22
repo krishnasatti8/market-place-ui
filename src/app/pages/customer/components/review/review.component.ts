@@ -16,6 +16,7 @@ export class ReviewComponent implements OnInit {
   selectedFile: File | null = null;
   imagePreview: string | ArrayBuffer | null;
   ratings = [1, 2, 3, 4, 5];
+  isLoading: boolean = false;
 
   constructor(
     private customerService: CustomerService,
@@ -49,22 +50,21 @@ export class ReviewComponent implements OnInit {
     formData.append('productId', this.productId.toString());
     formData.append('userId', UserStorageService.getUserId().toString());
 
+    this.isLoading = true;
     this.customerService.createReview(formData).subscribe(
       (response: any) => {
+        this.isLoading = false;
         if (response.id != null) {
           this.snackBar.open('Review added successfully', 'Close', {
             duration: 5000,
           });
           this.router.navigate(['/customer/my-orders']);
-        } else {
-          this.snackBar.open('Something went wrong', 'Close', {
-            duration: 5000,
-          });
         }
       },
-      (error: any) => {
-        this.snackBar.open('Internal Error', 'Close', {
-          duration: 2000,
+      (error) => {
+        this.isLoading = false;
+        this.snackBar.open('Something went wrong!', 'OK', {
+          duration: 5000,
         });
       }
     );

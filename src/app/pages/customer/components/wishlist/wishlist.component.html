@@ -1,20 +1,24 @@
-<div class="center-container">
-  <div class="product-card" *ngFor="let product of products">
-    <div class="product-image">
-      <img [src]="product.processedImage" alt="product image" />
-    </div>
-    <div class="product-info">
-      <div class="product-name">{{ product.productName }}</div>
-      <div class="product-price">{{ product.price | currency }}</div>
-      <div class="product-description">{{ product.productDescription }}</div>
-      <!-- <div class="product-buttons">
-        <button class="btn btn-primary" (click)="addToCart(product)">
-          Add to cart
-        </button>
-        <button class="btn btn-danger" (click)="removeFromWishlist(product)">
-          Remove from wishlist
-        </button>
-      </div> -->
-    </div>
-  </div>
+<div class="container">
+  <mat-card *ngFor="let product of products">
+    <mat-card-content>
+      <div class="product-card">
+        <div
+          class="product-image"
+          routerLink="/customer/product-details/{{ product.id }}"
+        >
+          <img [src]="product.processedImage" alt="product image" />
+        </div>
+        <div class="product-info">
+          <div class="details">
+            <div class="product-name">{{ product.productName }}</div>
+            <div class="product-price">{{ product.price | currency }}</div>
+            <div class="product-description">
+              {{ product.productDescription }}
+            </div>
+          </div>
+          <button class="kmart-button-3">Remove</button>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
 </div>
