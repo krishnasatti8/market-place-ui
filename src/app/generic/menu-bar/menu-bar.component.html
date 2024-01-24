@@ -1,8 +1,10 @@
 <mat-toolbar  class="mat-elevation-z6">
-  <button (click)="drawer.toggle()" mat-icon-button>
+  <button *ngIf="isCustomerLoggedIn || isAdminLoggedIn" (click)="drawer.toggle()" mat-icon-button>
     <mat-icon>menu</mat-icon>
   </button>
-  <span>K-Mart</span>
+  <div class="logo-container">
+    <img src="assets/kmart-logo.jpg" class="logo" alt="logo">
+  </div>
   <span class="example-spacer"></span>
   <div *ngIf="!isAdminLoggedIn && !isCustomerLoggedIn">
     <button class="kmart-button-1" routerLink="track-order">Track Order</button>
@@ -26,27 +28,27 @@
         </mat-list-item>
         
         <mat-list-item *ngIf="isAdminLoggedIn" routerLink="/admin/create-category" routerLinkActive="active">
-          <button mat-button><mat-icon>category</mat-icon>Post Category</button>
+          <button mat-button><mat-icon>add_to_photos</mat-icon>Post Category</button>
         </mat-list-item>
         
         <mat-list-item *ngIf="isAdminLoggedIn" routerLink="/admin/create-product" routerLinkActive="active">
-          <button mat-button><mat-icon>shopping_cart</mat-icon>Post Product</button>
+          <button mat-button><mat-icon>add_to_photos</mat-icon>Post Product</button>
         </mat-list-item>
         
         <mat-list-item *ngIf="isAdminLoggedIn" routerLink="/admin/create-coupon" routerLinkActive="active">
-          <button mat-button><mat-icon>shopping_cart</mat-icon>Post Coupon</button>
+          <button mat-button><mat-icon>add_to_photos</mat-icon>Post Coupon</button>
         </mat-list-item>
   
       
   
   
         <mat-list-item *ngIf="isAdminLoggedIn" routerLink="/admin/orders" routerLinkActive="active">
-          <button mat-button><mat-icon>shopping_cart</mat-icon>Orders</button>
+          <button mat-button><mat-icon>shopping_basket</mat-icon>Orders</button>
         </mat-list-item>
   
   
         <mat-list-item *ngIf="isAdminLoggedIn" routerLink="/admin/coupons" routerLinkActive="active">
-          <button mat-button><mat-icon>shopping_cart</mat-icon>Coupons</button>
+          <button mat-button><mat-icon>notes</mat-icon>Coupons</button>
         </mat-list-item>
 
         <mat-list-item *ngIf="isAdminLoggedIn" routerLink="/admin/analytics" routerLinkActive="active">
@@ -58,19 +60,19 @@
         </mat-list-item>
   
         <mat-list-item *ngIf="isCustomerLoggedIn" routerLink="/customer/my-orders" routerLinkActive="active">
-          <button mat-button><mat-icon>shopping_cart</mat-icon>My Orders</button>
+          <button mat-button><mat-icon>shopping_basket</mat-icon>My Orders</button>
         </mat-list-item>
   
         <mat-list-item *ngIf="isCustomerLoggedIn" routerLink="/customer/wishlist" routerLinkActive="active">
-          <button mat-button><mat-icon>shopping_cart</mat-icon>Wishlist</button>
+          <button mat-button><mat-icon>favorite</mat-icon>Wishlist</button>
         </mat-list-item>
   
         <mat-list-item *ngIf="isCustomerLoggedIn"  routerLink="/customer/profile" routerLinkActive="active">
-          <button mat-button><mat-icon>shopping_cart</mat-icon>Profile</button>
+          <button mat-button><mat-icon>person</mat-icon>Profile</button>
         </mat-list-item>
 
-        <mat-list-item  routerLink="" routerLinkActive="active">
-          <button mat-button><mat-icon>shopping_cart</mat-icon>About</button>
+        <mat-list-item *ngIf="isCustomerLoggedIn"  routerLink="/customer/about" routerLinkActive="active">
+          <button mat-button><mat-icon>info</mat-icon>About</button>
         </mat-list-item>
 
         <mat-list-item *ngIf="isAdminLoggedIn || isCustomerLoggedIn">

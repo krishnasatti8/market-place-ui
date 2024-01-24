@@ -20,12 +20,21 @@
               {{ product.productDescription }}
             </div>
           </div>
-          <button
-            class="kmart-button-3"
-            (click)="removeFromWishlist(product.productId)"
-          >
-            Remove
-          </button>
+
+          <div>
+            <button
+              class="kmart-button-3"
+              (click)="removeFromWishlist(product.productId)"
+            >
+              Remove
+            </button>
+            <button
+              class="kmart-button-1"
+              (click)="moveToCart(product.productId)"
+            >
+              Move to cart
+            </button>
+          </div>
         </div>
       </div>
     </mat-card-content>

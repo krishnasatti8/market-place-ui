@@ -7,7 +7,7 @@
         </div>
         <div class="product-details">
           <div class="product-name">{{ product.name }}</div>
-          <div class="product-price">{{ product.price | currency }}</div>
+          <div class="product-price">{{ product.price*product.quantity | currency }}</div>
           <div class="product-description">
            <strong>Quantity : </strong> {{ product.quantity}}
           </div>

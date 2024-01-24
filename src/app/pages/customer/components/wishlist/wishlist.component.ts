@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CustomerService } from '../../services/customer.service';
 import { UserStorageService } from 'src/app/services/storage/user-storage.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-wishlist',
@@ -13,8 +14,9 @@ export class WishlistComponent implements OnInit {
   isLoading = false;
 
   constructor(
-    private CustomerService: CustomerService,
-    private sanckBar: MatSnackBar
+    private customerService: CustomerService,
+    private snackBar: MatSnackBar,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -23,7 +25,7 @@ export class WishlistComponent implements OnInit {
 
   getWishlist() {
     this.isLoading = true;
-    this.CustomerService.getWislistByUserId().subscribe(
+    this.customerService.getWislistByUserId().subscribe(
       (res: any) => {
         console.log(res);
         this.isLoading = false;
@@ -35,7 +37,7 @@ export class WishlistComponent implements OnInit {
       },
       (error) => {
         this.isLoading = false;
-        this.sanckBar.open('Something Went Wrong', 'Close', {
+        this.snackBar.open('Something Went Wrong', 'Close', {
           duration: 5000,
         });
       }
@@ -49,7 +51,7 @@ export class WishlistComponent implements OnInit {
     };
 
     this.isLoading = true;
-    this.CustomerService.removeFromWishlist(wishlistDto).subscribe(
+    this.customerService.removeFromWishlist(wishlistDto).subscribe(
       (res: any) => {
         this.isLoading = false;
         this.products = [];
@@ -57,9 +59,39 @@ export class WishlistComponent implements OnInit {
       },
       (error) => {
         this.isLoading = false;
-        this.sanckBar.open('Something Went Wrong', 'Close', {
+        this.snackBar.open('Something Went Wrong', 'Close', {
           duration: 5000,
         });
+      }
+    );
+  }
+
+  moveToCart(productId: any) {
+    this.isLoading = true;
+    this.customerService.addToCart(productId).subscribe(
+      (res) => {
+        this.isLoading = false;
+        this.snackBar.open('Added to cart', 'SUCCESS', {
+          duration: 5000,
+        });
+        this.removeFromWishlist(productId);
+        this.router.navigateByUrl('/customer/cart');
+      },
+      (error) => {
+        this.isLoading = false;
+        if (error.status === 409) {
+          this.snackBar.open('Product already in cart', 'Close', {
+            duration: 5000,
+          });
+          return;
+        } else {
+          this.isLoading = false;
+          this.snackBar.open('Added to cart ', 'OK', {
+            duration: 5000,
+          });
+          this.removeFromWishlist(productId);
+          this.router.navigateByUrl('/customer/cart');
+        }
       }
     );
   }

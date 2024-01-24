@@ -16,7 +16,8 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { SpinnerComponent } from 'src/app/shared/spinner/spinner.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-
+import { ProfileComponent } from './components/profile/profile.component';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     ReviewComponent,
     ProductDetailsComponent,
     WishlistComponent,
+    ProfileComponent,
+    AboutComponent,
   ],
   imports: [
     CommonModule,
@@ -38,6 +41,6 @@ import { SharedModule } from 'src/app/shared/shared.module';
     ReactiveFormsModule,
     HttpClientModule,
     SharedModule,
-  ]
+  ],
 })
-export class CustomerModule { }
+export class CustomerModule {}
