@@ -113,9 +113,9 @@ form {
 }
 
 .value3 {
-  font-size: 16px;
-  font-weight: bold;
-  color: black;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .order-button {
@@ -124,3 +124,28 @@ form {
   display: flex;
   justify-content: flex-end;
 }
+
+.empty-cart {
+  width: 100vw;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cart-icon{
+  font-size: 30px;
+}
+
+.coupon-name{
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 15px;
+  margin-right: 10px;
+}
+
+.remove-icon{
+  color: red;
+}
+

@@ -48,6 +48,13 @@ export class CustomerService {
     );
   }
 
+  removeCoupon() {
+    const userId = UserStorageService.getUserId();
+    return this.http.get(`${BASE_URL}/api/customer/removecoupon/${userId}`, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
   increaseProductQuantity(productId: string) {
     const cartDto = {
       productId: productId,
@@ -66,6 +73,17 @@ export class CustomerService {
     };
 
     return this.http.post(`${BASE_URL}/api/customer/deduction`, cartDto, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
+  removeFromCart(productId: string) {
+    const cartDto = {
+      productId: productId,
+      userId: UserStorageService.getUserId(),
+    };
+
+    return this.http.post(`${BASE_URL}/api/customer/removefromcart`, cartDto, {
       headers: this.createAuthorizationHeader(),
     });
   }
@@ -114,10 +132,27 @@ export class CustomerService {
       }
     );
   }
-  
+
+  removeFromWishlist(wishlistDto: any) {
+    return this.http.post(
+      `${BASE_URL}/api/customer/removefromwishlist`,
+      wishlistDto,
+      {
+        headers: this.createAuthorizationHeader(),
+      }
+    );
+  }
+
   getWislistByUserId() {
     const userId = UserStorageService.getUserId();
     return this.http.get(`${BASE_URL}/api/customer/fetchwishlist/${userId}`, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
+  getCartCount() {
+    const userId = UserStorageService.getUserId();
+    return this.http.get(`${BASE_URL}/api/customer/cartcount/${userId}`, {
       headers: this.createAuthorizationHeader(),
     });
   }

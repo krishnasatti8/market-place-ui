@@ -12,7 +12,7 @@
 
   <div *ngIf="isCustomerLoggedIn">
     <button mat-icon-button routerLink="/customer/cart">
-      <mat-icon matBadge="0" matBadgeColor="warn" matBadgeSize="medium">shopping_cart</mat-icon>
+      <mat-icon [matBadge]="cartCount" matBadgeColor="warn" matBadgeSize="medium">shopping_cart</mat-icon>
     </button>
   </div>
 </mat-toolbar>

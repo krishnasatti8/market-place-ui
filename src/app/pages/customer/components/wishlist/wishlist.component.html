@@ -1,10 +1,14 @@
-<div class="container">
+<div class="spinner-container" *ngIf="isLoading">
+  <app-spinner></app-spinner>
+</div>
+
+<div class="container" [ngClass]="isLoading ? 'blur' : ''">
   <mat-card *ngFor="let product of products">
     <mat-card-content>
       <div class="product-card">
         <div
           class="product-image"
-          routerLink="/customer/product-details/{{ product.id }}"
+          routerLink="/customer/product-details/{{ product.productId }}"
         >
           <img [src]="product.processedImage" alt="product image" />
         </div>
@@ -16,7 +20,12 @@
               {{ product.productDescription }}
             </div>
           </div>
-          <button class="kmart-button-3">Remove</button>
+          <button
+            class="kmart-button-3"
+            (click)="removeFromWishlist(product.productId)"
+          >
+            Remove
+          </button>
         </div>
       </div>
     </mat-card-content>

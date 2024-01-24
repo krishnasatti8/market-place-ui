@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
         'krishna@gmail.com',
         [Validators.required, Validators.email],
       ],
-      password: ['admin', Validators.required],
+      password: ['Krishna@777', Validators.required],
     });
   }
 
