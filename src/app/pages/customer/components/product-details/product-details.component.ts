@@ -81,4 +81,32 @@ export class ProductDetailsComponent implements OnInit {
       }
     );
   }
+
+  addToCart() {
+    this.isLoading = true;
+    this.customerService.addToCart(this.productId).subscribe(
+      (res) => {
+        this.isLoading = false;
+        this.snackBar.open('Added to cart', 'SUCCESS', {
+          duration: 5000,
+        });
+        this.router.navigateByUrl('/customer/cart');
+      },
+      (error) => {
+        this.isLoading = false;
+        if (error.status === 409) {
+          this.snackBar.open('Product already in cart', 'Close', {
+            duration: 5000,
+          });
+          return;
+        } else {
+          this.isLoading = false;
+          this.snackBar.open('Added to cart ', 'OK', {
+            duration: 5000,
+          });
+          this.router.navigateByUrl('/customer/cart');
+        }
+      }
+    );
+  }
 }

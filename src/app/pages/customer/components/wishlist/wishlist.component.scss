@@ -75,3 +75,11 @@ img{
   font-weight: normal;
   color: black;
 }
+
+.empty-wishlist{
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

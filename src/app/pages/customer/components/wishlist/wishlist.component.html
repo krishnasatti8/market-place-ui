@@ -2,7 +2,7 @@
   <app-spinner></app-spinner>
 </div>
 
-<div class="container" [ngClass]="isLoading ? 'blur' : ''">
+<div class="container" [ngClass]="isLoading ? 'blur' : ''" *ngIf="products.length > 0; else emptyWishlist">
   <mat-card *ngFor="let product of products">
     <mat-card-content>
       <div class="product-card">
@@ -40,3 +40,10 @@
     </mat-card-content>
   </mat-card>
 </div>
+
+<ng-template #emptyWishlist>
+  <div class="empty-wishlist">
+    <mat-icon class="cart-icon">favorite</mat-icon>
+    <h1>Your wishlist is empty</h1>
+  </div>
+</ng-template>

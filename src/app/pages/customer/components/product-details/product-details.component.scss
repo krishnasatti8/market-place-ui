@@ -28,15 +28,24 @@ img {
 
 .product-details {
     padding-left: 30px;
+    // background-color: yellow;
 }
 
-.product-name {
+.product-content{
+    margin: 30px 0px;
+}
+
+.col1{
+    margin: 10px 0px;
+}
+
+.name {
     font-size: 16px;
     font-weight: bold;
     // margin-bottom: 3px;
 }
 
-.product-price {
+.price {
     font-size: 15px;
     font-weight: bold;
     color: green;
@@ -44,7 +53,7 @@ img {
 
 }
 
-.product-description {
+.description {
     font-size: 14px;
     font-weight: normal;
     color: black;
@@ -109,34 +118,35 @@ img:hover {
     align-items: center;
 }
 
-.person{
-   background-color:lightgray;
-   border-radius: 10px;  
-   margin-right: 5px; 
+.person {
+    background-color: lightgray;
+    border-radius: 10px;
+    margin-right: 5px;
 }
 
-.text{
+.text {
     margin-top: 15px;
     // background-color: aqua;
 }
-.rating-icon{
+
+.rating-icon {
     color: gold;
 }
 
 
-.description{
+.description {
     padding-left: 5px;
     margin-top: 2px;
     color: black
 }
 
-.review-details{
+.review-details {
     margin-left: 10px;
     padding: 0px;
     // background-color: red;
 }
 
-h1{
+h1 {
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 5px;
@@ -172,7 +182,7 @@ h1{
     border: 2px solid lightgray;
 }
 
-.faq-details{
+.faq-details {
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -180,24 +190,24 @@ h1{
     align-items: start;
 }
 
-.questions{
+.questions {
     display: flex;
     flex-direction: row;
     // align-items: center;
 }
 
-.answers{
+.answers {
     display: flex;
     flex-direction: row;
     // align-items: center;
 }
 
-.question{
+.question {
     font-weight: bold;
     margin-right: 10px;
 }
 
-.answer{
+.answer {
     font-weight: bold;
     margin-right: 10px;
 }
