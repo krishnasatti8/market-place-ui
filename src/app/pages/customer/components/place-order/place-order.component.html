@@ -1,4 +1,4 @@
-<div class="container">
+
   <mat-card>
     <mat-card-title> Place Order </mat-card-title>
     <mat-card-content>
@@ -17,11 +17,11 @@
         </mat-form-field>
 
        <div class="button-row">
-        <button mat-raised-button color="primary" type="submit" [disabled]="orderForm.invalid" class="order-button" (click)="placeOrder()">Order</button>
-        <button mat-raised-button color="primary" type="button" class="close-button" (click)="closeForm()">Cancel</button>
+         <button class="kmart-button-2" type="button" (click)="closeForm()">Cancel</button>
+        <button class="kmart-button-1" [ngClass]="orderForm.invalid ?'kmart-button-disabled':''"  type="submit" [disabled]="orderForm.invalid"  (click)="placeOrder()">Order</button>
 
        </div>
       </form>
     </mat-card-content>
   </mat-card>
-</div>
+

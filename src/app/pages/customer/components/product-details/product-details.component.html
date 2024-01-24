@@ -1,63 +1,78 @@
-<div class="product-details-container" *ngIf="product">
-  <mat-card class="product-card">
-    <div class="product-image">
-      <img [src]="product.processedImage" alt="{{ product.name }}" />
-    </div>
-    <div class="product-details">
-      <h2 class="product-name">{{ product.name }}</h2>
-
-      <p class="product-price">{{ product.price | currency }}</p>
-      <p class="product-category">
-        <strong>Category : </strong> {{ product.categoryName }}
-      </p>
-      <p class="product-description">
-        <strong>Description : </strong>{{ product.description }}
-      </p>
-    </div>
-  </mat-card>
-</div>
-
-<div class="review-container">
-  <h1 class="section-heading" *ngIf="reviews.length > 0">Customer Reviews</h1>
-  <div class="review-list" *ngIf="reviews">
-    <mat-card class="review-card" *ngFor="let review of reviews">
-      <div class="review-image">
-        <img
-          *ngIf="review.processedImage"
-          [src]="review.processedImage"
-          alt="review-image"
-        />
+<div class="container" [ngClass]="isLoading ? 'blur' : ''">
+  <div class="product-details-container" *ngIf="product">
+    <mat-card class="product-card">
+      <div class="product-image">
+        <img [src]="product.processedImage" alt="{{ product.name }}" />
       </div>
-      <div class="review-details">
-        <p>{{ review.description }}</p>
-        <div class="details-row">
-          <div class="rating-details">
-            <h1 class="rating">{{ review.rating }}</h1>
-            <mat-icon>star</mat-icon>
-          </div>
-          <p class="reviewer-name">{{ review.userName }}</p>
-        </div>
+      <div class="product-details">
+        <h1>Product Details</h1>
+        <h2 class="product-name">{{ product.name }}</h2>
+
+        <p class="product-price">{{ product.price | currency }}</p>
+        <p class="product-category">
+          <strong>Category : </strong> {{ product.categoryName }}
+        </p>
+        <p class="product-description">
+          <strong>Description : </strong>{{ product.description }}
+        </p>
+
+        <button (click)="addToWishlist()" class="kmart-button-3">Add to Wishlist</button>
+
       </div>
     </mat-card>
   </div>
-</div>
 
-<h1 class="section-heading" *ngIf="faqs.length > 0">
-  Frequently Asked Questions
-</h1>
-<div class="faq-list" *ngIf="faqs">
-  <div class="center-container">
-    <div class="faq-card" *ngFor="let faq of faqs">
-      <div class="faq-details">
-        <div class="questions">
-          <p class="question">Question:</p>
-          <p class="question-text">{{ faq.question }}</p>
+  <div class="review-container">
+    <h1 class="section-heading" *ngIf="reviews.length > 0">Customer Reviews</h1>
+    <div class="review-list" *ngIf="reviews">
+      <mat-card class="review-card" *ngFor="let review of reviews">
+        <div class="review-image">
+          <img
+            *ngIf="review.processedImage"
+            [src]="review.processedImage"
+            alt="review-image"
+          />
         </div>
-        <div class="answers">
-          <p class="answer">Answer:</p>
-          <p class="answer-text">{{ faq.answer }}</p>
+        <div class="review-details">
+          <div class="user">
+            <mat-icon class="person">person</mat-icon>
+            <p class="text">{{ review.userName }}</p>
+          </div>
+          <div class="rating">
+            <mat-icon
+              class="rating-icon"
+              *ngFor="let i of [].constructor(review.rating)"
+              >star</mat-icon
+            >
+          </div>
+          <p class="description">{{ review.description }}</p>
+
         </div>
-      </div>
+      </mat-card>
     </div>
+  </div>
+
+  <div class="faq-container">
+    <h1 class="section-heading" *ngIf="faqs.length > 0">
+      Frequently Asked Questions
+    </h1>
+    <div class="faq-list" *ngIf="faqs">
+      <mat-card class="faq-card" *ngFor="let faq of faqs">
+        <div class="faq-details">
+          <div class="questions">
+            <h4 class="question">Question :</h4>
+            <h4 class="question-text">{{ faq.question }}</h4>
+          </div>
+          <div class="answers">
+            <h4 class="answer">Answer :</h4>
+            <h4 class="answer-text">{{ faq.answer }}</h4>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+
+  <div class="spinner-container" *ngIf="isLoading">
+    <app-spinner></app-spinner>
   </div>
 </div>

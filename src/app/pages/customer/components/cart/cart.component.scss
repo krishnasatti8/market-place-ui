@@ -1,147 +1,126 @@
-/* Basic styling for the cart container */
 .cart-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Styling for each cart item */
-.cart-item {
-  border: 1px solid #eee;
-  margin-bottom: 20px;
-  padding: 15px;
+  padding: 10px;
   display: flex;
+  flex-direction: column;
+  justify-content: start;
   align-items: center;
+  width: 100%;
+
 }
 
-/* Styling for product information within each cart item */
+.cart-item {
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  display: flex;
+  flex-direction: row;
+}
+
 .product-info {
   display: flex;
-  align-items: center;
+  flex-direction: row;
+  width: 100%;
 }
 
 .product-image {
-  margin-right: 20px;
-  max-width: 100px;
-  max-height: 100px;
-  overflow: hidden;
+  width: 10%;
+}
 
-  img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-  }
+img {
+  height: 120px;
+  width: 140px;
 }
 
 .product-details {
-  flex-grow: 1;
-
-  .item-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .product-name {
-    font-size: 18px;
-    font-weight: bold;
-  }
-
-  .product-price {
-    font-size: 16px;
-    color: #333;
-  }
-
-  .quantity-controls {
-    display: flex;
-    align-items: center;
-
-    button {
-      background-color: #eee;
-      border: none;
-      padding: 8px;
-      cursor: pointer;
-
-      &:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-      }
-    }
-
-    .quantity {
-      margin: 0 10px;
-      font-size: 16px;
-    }
-  }
-}
-
-/* Styling for the coupon form container */
-.coupon-container {
-  margin-top: 20px;
-
-  form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    .mat-form-field {
-      width: 100%;
-
-      input {
-        width: 100%;
-      }
-    }
-
-    button {
-      margin-top: 15px;
-    }
-  }
-}
-
-/* Styling for the total price section */
-.total-section {
+  padding-left: 20px;
   display: flex;
-  flex-direction: column;
-  margin-top: 20px;
-
-  .total-price {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-
-    span {
-      font-size: 18px;
-      font-weight: bold;
-    }
-  }
-}
-
-/* Styling for the place order button */
-.order-button {
-  margin-top: 20px;
-
-  button {
-    font-size: 18px;
-  }
-}
-
-/* Styling for the empty cart template */
-.empty-cart {
-  display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-  margin: 50px auto;
+  width: 90%;
+}
 
-  mat-icon {
-    // font-size: 48px;
-    color: #aaa;
-  }
+.product-name {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  padding-left: 20px;
+}
 
-  span {
-    font-size: 18px;
-    margin-top: 10px;
-  }
+.product-price {
+  font-size: 15px;
+  font-weight: bold;
+  color: green;
+  // margin-bottom: 3px;
+  padding-left: 20px;
+
+
+}
+
+.quantity-controls {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+
+.coupon-container {
+  width: 90%;
+  padding: 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  margin-bottom: 10px;
+
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+
+.total-section {
+  width: 90%;
+  padding: 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+  margin-top: 2px;
+}
+
+.total-price {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+
+.value2 {
+  font-size: 16px;
+  font-weight: bold;
+  color: green;
+}
+
+
+.value1 {
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
+}
+
+.value3 {
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
+}
+
+.order-button {
+  width: 90%;
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
 }

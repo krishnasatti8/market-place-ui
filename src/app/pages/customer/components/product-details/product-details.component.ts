@@ -15,6 +15,7 @@ export class ProductDetailsComponent implements OnInit {
   product: any;
   faqs: any[] = [];
   reviews: any[] = [];
+  isLoading: boolean = false;
 
   constructor(
     private customerService: CustomerService,
@@ -29,8 +30,10 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   getProductDetails() {
+    this.isLoading = true;
     this.customerService.getProductDetails(this.productId).subscribe(
       (res: any) => {
+        this.isLoading = false;
         this.product = res.productDto;
         this.product.processedImage =
           'data:image/jpeg;base64,' + this.product.byteImage;
@@ -41,7 +44,8 @@ export class ProductDetailsComponent implements OnInit {
         });
       },
       (err) => {
-        this.snackBar.open('Internal Error', 'close', {
+        this.isLoading = false;
+        this.snackBar.open('Something went wrong!', 'OK', {
           duration: 5000,
         });
       }
@@ -54,8 +58,11 @@ export class ProductDetailsComponent implements OnInit {
       userId: UserStorageService.getUserId(),
     };
 
+    this.isLoading = true;
+
     this.customerService.addToWishlist(wishlistDto).subscribe(
       (res: any) => {
+        this.isLoading = false;
         if (res.id != null) {
           this.snackBar.open('Product added to wishlist', 'close', {
             duration: 5000,
